@@ -1,9 +1,13 @@
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Download, Mail } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+import LanguageToggle from './LanguageToggle';
 
 const Header = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -16,10 +20,10 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: 'Início', href: '#home' },
-    { label: 'Sobre', href: '#about' },
-    { label: 'Projetos', href: '#projects' },
-    { label: 'Contato', href: '#contact' }
+    { label: t('nav.home'), href: '#home' },
+    { label: t('nav.about'), href: '#about' },
+    { label: t('nav.projects'), href: '#projects' },
+    { label: t('nav.contact'), href: '#contact' }
   ];
 
   return (
@@ -52,20 +56,24 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="gap-2">
+          {/* Desktop Controls */}
+          <div className="hidden md:flex items-center space-x-2">
+            <LanguageToggle />
+            <ThemeToggle />
+            <Button variant="outline" size="sm" className="gap-2 ml-2">
               <Download className="h-4 w-4" />
-              Currículo
+              {t('button.resume')}
             </Button>
             <Button variant="default" size="sm" className="gap-2 hero-gradient">
               <Mail className="h-4 w-4" />
-              Contato
+              {t('button.contact')}
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageToggle />
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="sm"
@@ -94,11 +102,11 @@ const Header = () => {
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline" size="sm" className="gap-2 justify-start">
                   <Download className="h-4 w-4" />
-                  Baixar Currículo
+                  {t('button.downloadResume')}
                 </Button>
                 <Button variant="default" size="sm" className="gap-2 justify-start hero-gradient">
                   <Mail className="h-4 w-4" />
-                  Entre em Contato
+                  {t('button.getInTouch')}
                 </Button>
               </div>
             </div>
