@@ -1,10 +1,9 @@
-
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import { Menu, X, Download, Mail } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
-import LanguageToggle from './LanguageToggle';
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Download, Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import LanguageToggle from "./LanguageToggle";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -15,23 +14,23 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { label: t('nav.home'), href: '#home' },
-    { label: t('nav.about'), href: '#about' },
-    { label: t('nav.projects'), href: '#projects' },
-    { label: t('nav.contact'), href: '#contact' }
+    { label: t("nav.home"), href: "#home" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.contact"), href: "#contact" },
   ];
 
   return (
-    <header 
+    <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/95 backdrop-blur-sm border-b border-border' 
-          : 'bg-transparent'
+        isScrolled
+          ? "bg-background/95 backdrop-blur-sm border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <nav className="container-custom">
@@ -60,14 +59,26 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-2">
             <LanguageToggle />
             <ThemeToggle />
-            <Button variant="outline" size="sm" className="gap-2 ml-2">
-              <Download className="h-4 w-4" />
-              {t('button.resume')}
-            </Button>
-            <Button variant="default" size="sm" className="gap-2 hero-gradient">
-              <Mail className="h-4 w-4" />
-              {t('button.contact')}
-            </Button>
+            <a
+              href="https://drive.google.com/file/d/18i2o3E-T-R5-Ge0a-2YwJnLDfG-HH49J/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline" size="sm" className="gap-2 ml-2">
+                <Download className="h-4 w-4" />
+                {t("button.resume")}
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button
+                variant="default"
+                size="sm"
+                className="gap-2 hero-gradient"
+              >
+                <Mail className="h-4 w-4" />
+                {t("button.contact")}
+              </Button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -80,7 +91,11 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -100,14 +115,30 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline" size="sm" className="gap-2 justify-start">
-                  <Download className="h-4 w-4" />
-                  {t('button.downloadResume')}
-                </Button>
-                <Button variant="default" size="sm" className="gap-2 justify-start hero-gradient">
-                  <Mail className="h-4 w-4" />
-                  {t('button.getInTouch')}
-                </Button>
+                <a
+                  href="https://drive.google.com/file/d/18i2o3E-T-R5-Ge0a-2YwJnLDfG-HH49J/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="gap-2 justify-start"
+                  >
+                    <Download className="h-4 w-4" />
+                    {t("button.downloadResume")}
+                  </Button>
+                </a>
+                <a href="#contact">
+                  <Button
+                    variant="default"
+                    size="sm"
+                    className="gap-2 justify-start hero-gradient"
+                  >
+                    <Mail className="h-4 w-4" />
+                    {t("button.getInTouch")}
+                  </Button>
+                </a>
               </div>
             </div>
           </div>

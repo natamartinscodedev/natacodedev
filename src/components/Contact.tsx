@@ -1,25 +1,40 @@
-
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Github,
+  Send,
+  Instagram,
+} from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Simulate form submission
     toast({
       title: "Mensagem enviada!",
@@ -27,34 +42,40 @@ const Contact = () => {
     });
 
     // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'nata.martins@email.com',
-      href: 'mailto:nata.martins@email.com'
+      label: "Email",
+      value: "nata.codedev@gmail.com",
+      href: "mailto:nata.codedev@gmail.com",
     },
     {
       icon: Linkedin,
-      label: 'LinkedIn',
-      value: 'linkedin.com/in/nata-martins',
-      href: 'https://linkedin.com/in/nata-martins'
+      label: "LinkedIn",
+      value: "linkedin.com/in/nata-martins",
+      href: "https://linkedin.com/in/nata-martins",
     },
     {
       icon: Github,
-      label: 'GitHub',
-      value: 'github.com/nata-martins',
-      href: 'https://github.com/nata-martins'
+      label: "GitHub",
+      value: "github.com/natamartinscodedev",
+      href: "https://github.com/natamartinscodedev",
+    },
+    {
+      icon: Instagram,
+      label: "Instagram",
+      value: "@eusouonatamartinsoficial",
+      href: "https://www.instagram.com/eusouonatamartinsoficial/#",
     },
     {
       icon: MapPin,
-      label: 'Localização',
-      value: 'Belo Horizonte, MG',
-      href: null
-    }
+      label: "Localização",
+      value: "Belo Horizonte, MG",
+      href: null,
+    },
   ];
 
   return (
@@ -62,11 +83,10 @@ const Contact = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-gradient">
-            Vamos Conversar?
+            {t("contact.title")}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Estou disponível para novos desafios. Seja para uma vaga na sua empresa ou 
-            para dar vida ao seu projeto, entre em contato!
+            {t("contact.subtitle")}
           </p>
         </div>
 
@@ -75,73 +95,109 @@ const Contact = () => {
           <Card className="border-0 bg-background shadow-lg">
             <CardHeader>
               <CardTitle className="text-2xl font-heading">
-                Envie uma Mensagem
+                {t("contact.form.send")}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Nome
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2"
+                    >
+                      {t("contact.form.name")}
                     </label>
                     <Input
                       id="name"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      placeholder="Seu nome completo"
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      placeholder={t("contact.form.placeholder.name")}
                       required
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium mb-2"
+                    >
+                      {t("contact.form.email")}
                     </label>
                     <Input
                       id="email"
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      placeholder="seu@email.com"
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      placeholder={t("contact.form.placeholder.email")}
                       required
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                    Assunto
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.subject")}
                   </label>
-                  <Select onValueChange={(value) => setFormData({...formData, subject: value})}>
+                  <Select
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, subject: value })
+                    }
+                  >
                     <SelectTrigger>
-                      <SelectValue placeholder="Selecione um assunto" />
+                      <SelectValue
+                        placeholder={t("contact.form.placeholder.select")}
+                      />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="job">Oportunidade de Emprego</SelectItem>
-                      <SelectItem value="project">Orçamento de Projeto</SelectItem>
-                      <SelectItem value="freelance">Trabalho Freelancer</SelectItem>
-                      <SelectItem value="other">Outro</SelectItem>
+                      <SelectItem value="job">
+                        {t("contact.subject.job")}
+                      </SelectItem>
+                      <SelectItem value="project">
+                        {t("contact.subject.project")}
+                      </SelectItem>
+                      <SelectItem value="freelance">
+                        {t("contact.subject.frella")}
+                      </SelectItem>
+                      <SelectItem value="other">
+                        {t("contact.subject.other")}
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensagem
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium mb-2"
+                  >
+                    {t("contact.form.message")}
                   </label>
                   <Textarea
                     id="message"
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder="Conte-me mais sobre seu projeto ou oportunidade..."
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    placeholder={t("contact.form.placeholder.message")}
                     rows={5}
                     required
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full gap-2 hero-gradient">
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full gap-2 hero-gradient"
+                >
                   <Send className="h-5 w-5" />
-                  Enviar Mensagem
+                  {t("contact.form.send")}
                 </Button>
               </form>
             </CardContent>
@@ -152,9 +208,9 @@ const Contact = () => {
             <Card className="border-0 bg-muted/30">
               <CardContent className="p-8">
                 <h3 className="text-xl font-heading font-semibold mb-6">
-                  Informações de Contato
+                  {t("contact.info.title")}
                 </h3>
-                
+
                 <div className="space-y-4">
                   {contactInfo.map((item) => {
                     const Icon = item.icon;
@@ -164,14 +220,21 @@ const Contact = () => {
                           <Icon className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <p className="font-medium text-foreground">{item.label}</p>
+                          <p className="font-medium text-foreground">
+                            {item.label}
+                          </p>
                           <p className="text-muted-foreground">{item.value}</p>
                         </div>
                       </div>
                     );
 
                     return item.href ? (
-                      <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         {content}
                       </a>
                     ) : (
@@ -189,14 +252,24 @@ const Contact = () => {
                   <div className="w-8 h-8 bg-accent rounded-full animate-pulse"></div>
                 </div>
                 <h3 className="text-xl font-heading font-semibold mb-2 text-accent">
-                  Disponível para Projetos
+                  {t("contact.Status.title")}
                 </h3>
                 <p className="text-muted-foreground mb-4">
-                  Aberto a oportunidades de emprego e projetos freelancer
+                  {t("contact.Status.subtitle")}
                 </p>
-                <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                  Solicitar Orçamento
-                </Button>
+
+                <a
+                  href="https://wa.me/5531982305506?text=Olá,%20vi%20seu%20projeto%20e%20quero%20conversar!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+                  >
+                    {t("contact.act.title")}
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </div>

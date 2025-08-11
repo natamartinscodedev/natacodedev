@@ -1,19 +1,19 @@
-
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Button } from '@/components/ui/button';
-import { Globe } from 'lucide-react';
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { Globe } from "lucide-react";
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const languages = [
-    { code: 'pt', name: 'PT', flag: '🇧🇷' },
-    { code: 'en', name: 'EN', flag: '🇺🇸' }
+    { code: "pt", name: "PT", flag: "🇧🇷" },
+    { code: "en", name: "EN", flag: "🇺🇸" },
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+  const currentLanguage =
+    languages.find((lang) => lang.code === i18n.language) || languages[0];
 
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
@@ -29,7 +29,9 @@ const LanguageToggle = () => {
         className="gap-2 p-2"
       >
         <Globe className="h-4 w-4" />
-        <span className="text-sm">{currentLanguage.flag} {currentLanguage.name}</span>
+        <span className="text-sm">
+          {currentLanguage.flag} {currentLanguage.name}
+        </span>
       </Button>
 
       {isOpen && (

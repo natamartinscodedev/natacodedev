@@ -1,60 +1,93 @@
-
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Github, Eye } from "lucide-react";
 
 const Projects = () => {
+  const { t } = useTranslation();
+
   const projects = [
     {
-      title: 'E-commerce Moderno',
-      description: 'Plataforma completa de e-commerce com carrinho, pagamentos e painel administrativo.',
-      image: '🛒',
-      technologies: ['React', 'Next.js', 'TypeScript', 'Stripe'],
-      category: 'Web App',
-      status: 'Concluído',
-      metrics: '+300% conversão'
+      title: "Analytic Web Pro",
+      description:
+        "Milhões de novas oportunidades - Evite exclusão, multas e reputação em risco — torne sua empresa inclusiva, competitiva e legalmente segura.",
+      image: "/img/analitycwebpro.png",
+      technologies: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Vercel",
+        "Mongo DB Atlas",
+      ],
+      category: "Web App",
+      status: "Em Desenvolvimento",
+      // metrics: "+300% conversão",
+      linkweb: "https://www.analytcwebpro.com/",
+      show: false,
     },
     {
-      title: 'Landing Page SaaS',
-      description: 'Landing page de alta conversão para startup de tecnologia financeira.',
-      image: '💰',
-      technologies: ['React', 'Tailwind', 'Framer Motion'],
-      category: 'Landing Page',
-      status: 'Concluído',
-      metrics: '95% PageSpeed'
+      title: "Day Life Coffee",
+      description:
+        "As Melhores Cafeterias de Belo Horizonte Descubra os locais mais aconchegantes para apreciar um café de qualidade.",
+      image: "/img/daylifecoffee.png",
+      technologies: [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Vercel",
+        "Mongo DB Atlas",
+      ],
+      category: "Web Page",
+      status: "Concluído",
+      // metrics: "95% PageSpeed",
+      linkweb: "https://www.daylifecoffee.com/",
+      show: false,
     },
     {
-      title: 'Dashboard Analytics',
-      description: 'Dashboard interativo para análise de dados com gráficos e relatórios em tempo real.',
-      image: '📊',
-      technologies: ['React', 'TypeScript', 'Chart.js', 'Node.js'],
-      category: 'Web App',
-      status: 'Em Desenvolvimento',
-      metrics: 'Real-time data'
+      title: "Afforai",
+      description:
+        "Afforai é um chatbot de IA que busca, resume e traduz informações de diversas fontes para produzir pesquisas confiáveis. Alimente documentos de pesquisa extensos com pilhas de requisitos de conformidade áridos e extraia as principais descobertas.",
+      image: "/img/afforai.png",
+      technologies: ["React", "TypeScript", "Sass", "Animations", "Vercel"],
+      category: "Landing Page",
+      status: "Concluído",
+      // metrics: "Real-time data",
+      linkweb: "https://afforai-landingpage.vercel.app/",
+      linkgithub: "https://github.com/natamartinscodedev/Afforai-landingpage",
+      show: true,
     },
     {
-      title: 'App Delivery',
-      description: 'Aplicação completa de delivery com sistema de pedidos e tracking em tempo real.',
-      image: '🍕',
-      technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-      category: 'Projeto Escalável',
-      status: 'Concluído',
-      metrics: '10k+ usuários'
-    }
+      title: "Banco Inter",
+      description:
+        "Criei este projeto para aprimorar minhas habilidades sociais. Usei NextJS e Sass para estilos e Web Response. Boas práticas, como código limpo, componentes, web responsiva... e para deploy, usei @Vercel.",
+      image: "/img/inter.png",
+      technologies: ["Next.js", "TypeScript", "Vercel"],
+      category: "Projeto Escalável",
+      status: "Concluído",
+      // metrics: "10k+ usuários",
+      linkweb: "https://webinter-gamma.vercel.app/",
+      linkgithub: "https://github.com/natamartinscodedev/webinter",
+      show: true,
+    },
   ];
 
-  const categories = ['Todos', 'Landing Pages', 'Web Apps', 'Projetos Escaláveis'];
+  const categories = [
+    `${t("projects.filter.all")}`,
+    // "Landing Pages",
+    // "Web Apps",
+    // "Projetos Escaláveis",
+  ];
 
   return (
     <section id="projects" className="section-padding bg-muted/30">
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-gradient">
-            Meus Projetos
+            {t("projects.title")}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Uma seleção dos meus trabalhos mais recentes e impactantes
+            {t("projects.subtitle")}
           </p>
 
           {/* Category Filters */}
@@ -62,8 +95,8 @@ const Projects = () => {
             {categories.map((category) => (
               <Button
                 key={category}
-                variant={category === 'Todos' ? 'default' : 'outline'}
-                className={category === 'Todos' ? 'hero-gradient' : ''}
+                variant={category ? "default" : "outline"}
+                className={category === "Projetos" ? "hero-gradient" : ""}
               >
                 {category}
               </Button>
@@ -73,7 +106,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card 
+            <Card
               key={project.title}
               className="group project-card border-0 bg-background overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
@@ -81,18 +114,40 @@ const Projects = () => {
               <CardContent className="p-0">
                 {/* Project Image/Icon */}
                 <div className="relative h-48 bg-gradient-subtle flex items-center justify-center project-image">
-                  <div className="text-6xl">{project.image}</div>
-                  
+                  <div className="text-6xl">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="h-48 "
+                    />
+                  </div>
+
                   {/* Overlay with actions */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                    <Button size="sm" variant="secondary" className="gap-2">
-                      <Eye className="h-4 w-4" />
-                      Preview
-                    </Button>
-                    <Button size="sm" variant="secondary" className="gap-2">
-                      <Github className="h-4 w-4" />
-                      Código
-                    </Button>
+                    <a
+                      href={project.linkweb}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button size="sm" variant="secondary" className="gap-2">
+                        <Eye className="h-4 w-4" />
+                        Preview
+                      </Button>
+                    </a>
+                    {project.show === true ? (
+                      <a
+                        href={project.linkgithub}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button size="sm" variant="secondary" className="gap-2">
+                          <Github className="h-4 w-4" />
+                          Código
+                        </Button>
+                      </a>
+                    ) : (
+                      ""
+                    )}
                   </div>
                 </div>
 
@@ -107,17 +162,19 @@ const Projects = () => {
                         {project.category}
                       </Badge>
                     </div>
-                    <Badge 
-                      variant={project.status === 'Concluído' ? 'default' : 'secondary'}
+                    {/* <Badge
+                      variant={
+                        project.status === "Concluído" ? "default" : "secondary"
+                      }
                       className="text-xs"
                     >
                       {project.status}
-                    </Badge>
+                    </Badge> */}
                   </div>
 
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                  {/* <p className="text-muted-foreground mb-4 leading-relaxed">
                     {project.description}
-                  </p>
+                  </p> */}
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -129,7 +186,7 @@ const Projects = () => {
                   </div>
 
                   {/* Metrics */}
-                  <div className="flex items-center justify-between">
+                  {/* <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-accent rounded-full"></div>
                       <span className="text-sm font-medium text-accent">
@@ -137,11 +194,15 @@ const Projects = () => {
                       </span>
                     </div>
 
-                    <Button variant="ghost" size="sm" className="gap-2 text-primary">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2 text-primary"
+                    >
                       Ver Detalhes
                       <ExternalLink className="h-4 w-4" />
                     </Button>
-                  </div>
+                  </div> */}
                 </div>
               </CardContent>
             </Card>
@@ -149,10 +210,16 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="gap-2">
-            Ver Todos os Projetos
-            <ExternalLink className="h-5 w-5" />
-          </Button>
+          <a
+            href="https://github.com/natamartinscodedev?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg" variant="outline" className="gap-2">
+              {t("projects.act.title")}
+              <ExternalLink className="h-5 w-5" />
+            </Button>
+          </a>
         </div>
       </div>
     </section>

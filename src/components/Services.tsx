@@ -1,45 +1,47 @@
-
-import { Card, CardContent } from '@/components/ui/card';
-import { Zap, Globe, Smartphone, BarChart, Code, Palette } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { Card, CardContent } from "@/components/ui/card";
+import { Zap, Globe, Smartphone, BarChart, Code, Palette } from "lucide-react";
 
 const Services = () => {
+  const { t } = useTranslation();
+
   const services = [
     {
       icon: Globe,
-      title: 'Landing Pages de Alta Conversão',
-      description: 'Páginas otimizadas para converter visitantes em clientes, com foco em performance e UX.',
-      color: 'text-primary'
+      title: `${t("services.landing.title")}`,
+      description: `${t("services.landing.description")}`,
+      color: "text-primary",
     },
     {
       icon: Smartphone,
-      title: 'Web Pages Responsivas',
-      description: 'Sites que funcionam perfeitamente em todos os dispositivos, do mobile ao desktop.',
-      color: 'text-accent'
+      title: `${t("services.webapp.title")}`,
+      description: `${t("services.webapp.description")}`,
+      color: "text-accent",
     },
     {
       icon: Code,
-      title: 'Aplicações Web Escaláveis',
-      description: 'Sistemas complexos em React, preparados para crescer junto com seu negócio.',
-      color: 'text-primary'
+      title: `${t("services.responsive.title")}`,
+      description: `${t("services.responsive.description")}`,
+      color: "text-primary",
     },
     {
       icon: Palette,
-      title: 'Tradução i18n (PT-BR/EN-US)',
-      description: 'Implementação de múltiplos idiomas para alcançar audiências globais.',
-      color: 'text-accent'
+      title: `${t("services.in18.title")}`,
+      description: `${t("services.in18.description")}`,
+      color: "text-accent",
     },
     {
       icon: BarChart,
-      title: 'Otimização de Performance',
-      description: 'Melhoria da velocidade e eficiência de aplicações frontend existentes.',
-      color: 'text-primary'
+      title: `${t("services.performance.title")}`,
+      description: `${t("services.performance.description")}`,
+      color: "text-primary",
     },
     {
       icon: Zap,
-      title: 'Desenvolvimento Ágil',
-      description: 'Entrega rápida sem comprometer a qualidade, usando as melhores práticas.',
-      color: 'text-accent'
-    }
+      title: `${t("services.development.title")}`,
+      description: `${t("services.development.description")}`,
+      color: "text-accent",
+    },
   ];
 
   return (
@@ -47,10 +49,10 @@ const Services = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold mb-6 text-gradient">
-            Serviços Oferecidos
+            {t("services.title")}
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Soluções completas para transformar suas ideias em produtos digitais de sucesso
+            {t("services.subtitle")}
           </p>
         </div>
 
@@ -58,7 +60,7 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card 
+              <Card
                 key={service.title}
                 className="group hover-lift border-0 bg-background/80 backdrop-blur-sm"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -67,11 +69,11 @@ const Services = () => {
                   <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-muted group-hover:scale-110 transition-transform duration-300">
                     <Icon className={`h-8 w-8 ${service.color}`} />
                   </div>
-                  
+
                   <h3 className="text-xl font-heading font-semibold mb-4 group-hover:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
@@ -85,8 +87,12 @@ const Services = () => {
           <div className="inline-flex items-center gap-4 p-6 bg-background rounded-2xl border border-border shadow-lg">
             <div className="text-2xl">🚀</div>
             <div className="text-left">
-              <p className="font-heading font-semibold text-lg">Entrega Garantida</p>
-              <p className="text-muted-foreground">Projetos entregues no prazo, sempre</p>
+              <p className="font-heading font-semibold text-lg">
+                {t("services.act.title")}
+              </p>
+              <p className="text-muted-foreground">
+                {t("services.act.subtitle")}
+              </p>
             </div>
           </div>
         </div>

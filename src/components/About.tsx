@@ -1,34 +1,49 @@
-
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Download, ExternalLink } from 'lucide-react';
+import { useTranslation } from "react-i18next";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Download, ExternalLink } from "lucide-react";
 
 const About = () => {
+  const { t } = useTranslation();
+
   const skills = [
-    'React.js', 'Next.js', 'TypeScript', 'JavaScript ES6+',
-    'Node.js', 'HTML5', 'CSS3', 'Tailwind CSS',
-    'Sass', 'Material UI', 'Git', 'Jest',
-    'React Testing Library', 'Cypress', 'REST APIs', 'CI/CD'
+    "React.js",
+    "Next.js",
+    "TypeScript",
+    "JavaScript ES6+",
+    "Node.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Sass",
+    "Material UI",
+    "Git",
+    "Jest",
+    "React Testing Library",
+    "Cypress",
+    "REST APIs",
+    "CI/CD",
+    "Mongo DB Atlas"
   ];
 
   const differentials = [
     {
-      title: 'Entrega Rápida e Ágil',
-      description: 'Desenvolvimento eficiente sem comprometer a qualidade'
+      title: `${t("about.softskills.title01")}`,
+      description: `${t("about.softskills.description01")}`,
     },
     {
-      title: 'Foco em Soluções Eficazes',
-      description: 'Sempre pensando no problema real do usuário'
+      title: `${t("about.softskills.title02")}`,
+      description: `${t("about.softskills.description02")}`,
     },
     {
-      title: 'Projetos de Diversas Escalas',
-      description: 'De landing pages a aplicações complexas'
+      title: `${t("about.softskills.title03")}`,
+      description: `${t("about.softskills.description03")}`,
     },
     {
-      title: 'Qualidade e Responsividade',
-      description: 'Código limpo e experiência perfeita em todos os dispositivos'
-    }
+      title: `${t("about.softskills.title04")}`,
+      description: `${t("about.softskills.description04")}`,
+    },
   ];
 
   return (
@@ -43,7 +58,7 @@ const About = () => {
                   <div className="text-6xl">👨‍💻</div>
                 </div>
               </div>
-              
+
               {/* Floating element */}
               <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground px-4 py-2 rounded-2xl font-semibold animate-float">
                 Frontend Pleno
@@ -52,34 +67,43 @@ const About = () => {
 
             <div className="text-center lg:text-left">
               <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6 text-gradient">
-                Sobre Mim
+                {t("about.title")}
               </h2>
-              
+
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Desenvolvedor Frontend apaixonado por <strong className="text-foreground">tecnologia, UX e código limpo</strong>. 
-                Com experiência sólida em React e Next.js, foco em criar soluções que realmente 
-                fazem a diferença na vida das pessoas.
+                {t("about.description")}
               </p>
 
               <div className="mb-8">
                 <h3 className="text-xl font-heading font-semibold mb-4 text-primary">
-                  Minha Missão
+                  {t("about.mission.title")}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Construir soluções digitais que melhoram vidas, combinando 
-                  <span className="text-foreground font-medium"> tecnologia, empatia e visão de produto</span>.
+                  {t("about.mission.description")}
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="gap-2 hero-gradient">
-                  <Download className="h-4 w-4" />
-                  Baixar Currículo
-                </Button>
-                <Button variant="outline" className="gap-2">
-                  <ExternalLink className="h-4 w-4" />
-                  Ver LinkedIn
-                </Button>
+                <a
+                  href="https://drive.google.com/file/d/18i2o3E-T-R5-Ge0a-2YwJnLDfG-HH49J/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="gap-2 hero-gradient">
+                    <Download className="h-4 w-4" />
+                    {t("about.act.cv")}
+                  </Button>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/nata-martins/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="gap-2">
+                    <ExternalLink className="h-4 w-4" />
+                    {t("about.act.linkedin")}
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
@@ -90,14 +114,14 @@ const About = () => {
             <Card className="border-0 bg-muted/30">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-heading font-semibold mb-6 text-center">
-                  Tecnologias & Ferramentas
+                  {t("about.skills.tools")}
                 </h3>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {skills.map((skill, index) => (
-                    <Badge 
-                      key={skill} 
-                      variant="secondary" 
+                    <Badge
+                      key={skill}
+                      variant="secondary"
                       className="justify-center py-2 hover-lift"
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
@@ -112,12 +136,12 @@ const About = () => {
             <Card className="border-0 bg-background">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-heading font-semibold mb-6 text-center">
-                  Meus Diferenciais
+                  {t("about.skills")}
                 </h3>
-                
+
                 <div className="space-y-6">
                   {differentials.map((item, index) => (
-                    <div 
+                    <div
                       key={item.title}
                       className="flex items-start gap-4 p-4 rounded-xl hover:bg-muted/50 transition-colors duration-200"
                       style={{ animationDelay: `${index * 0.1}s` }}
