@@ -22,6 +22,14 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+const createMailtoLink = (formData) => {
+  const subject = encodeURIComponent(formData.subject);
+  const body = encodeURIComponent(
+    `Nome: ${formData.name}\nEmail: ${formData.email}\nMensagem: ${formData.message}`
+  );
+  return `mailto:nata.codedev@gmail.com?subject=${subject}&body=${body}`;
+};
+
 const Contact = () => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -31,19 +39,6 @@ const Contact = () => {
     message: "",
   });
   const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Simulate form submission
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entrarei em contato em breve. Obrigado!",
-    });
-
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
 
   const contactInfo = [
     {
@@ -99,7 +94,17 @@ const Contact = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                action="https://formsubmit.co/nata.codedev@gmail.com"
+                method="POST"
+                onSubmit={() => {
+                  toast({
+                    title: "Mensagem enviada!",
+                    description: "Obrigada! Em breve você receberá um retorno.",
+                  });
+                }}
+                className="space-y-6"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -110,6 +115,7 @@ const Contact = () => {
                     </label>
                     <Input
                       id="name"
+                      name="name"
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
@@ -127,6 +133,7 @@ const Contact = () => {
                     </label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       value={formData.email}
                       onChange={(e) =>
@@ -146,6 +153,7 @@ const Contact = () => {
                     {t("contact.form.subject")}
                   </label>
                   <Select
+                    name="subject"
                     onValueChange={(value) =>
                       setFormData({ ...formData, subject: value })
                     }
@@ -181,6 +189,7 @@ const Contact = () => {
                   </label>
                   <Textarea
                     id="message"
+                    name="message"
                     value={formData.message}
                     onChange={(e) =>
                       setFormData({ ...formData, message: e.target.value })
@@ -199,6 +208,20 @@ const Contact = () => {
                   <Send className="h-5 w-5" />
                   {t("contact.form.send")}
                 </Button>
+
+                {/* Campos ocultos configurados corretamente */}
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://natacodedev.vercel.app/"
+                />
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Message of Portfolio!"
+                />
+                <input type="hidden" name="_replyto" value={formData.email} />
+                <input type="hidden" name="_captcha" value="false" />
               </form>
             </CardContent>
           </Card>
