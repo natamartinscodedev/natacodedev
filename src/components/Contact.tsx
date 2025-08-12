@@ -267,34 +267,6 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
-
-            {/* Availability Status */}
-            <Card className="border-0 bg-accent/10 border-accent/20">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 bg-accent rounded-full animate-pulse"></div>
-                </div>
-                <h3 className="text-xl font-heading font-semibold mb-2 text-accent">
-                  {t("contact.Status.title")}
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  {t("contact.Status.subtitle")}
-                </p>
-
-                <a
-                  href="https://wa.me/5531982305506?text=Olá,%20vi%20seu%20projeto%20e%20quero%20conversar!"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button
-                    variant="outline"
-                    className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
-                  >
-                    {t("contact.act.title")}
-                  </Button>
-                </a>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>

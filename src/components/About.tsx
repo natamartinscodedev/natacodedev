@@ -24,7 +24,7 @@ const About = () => {
     "Cypress",
     "REST APIs",
     "CI/CD",
-    "Mongo DB Atlas"
+    "Mongo DB Atlas",
   ];
 
   const differentials = [
@@ -57,11 +57,6 @@ const About = () => {
                 <div className="w-full h-full bg-muted rounded-3xl flex items-center justify-center">
                   <div className="text-6xl">👨‍💻</div>
                 </div>
-              </div>
-
-              {/* Floating element */}
-              <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground px-4 py-2 rounded-2xl font-semibold animate-float">
-                Frontend Pleno
               </div>
             </div>
 

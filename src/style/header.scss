@@ -1,0 +1,36 @@
+// Definições de variáveis para fácil customização
+$glass-bg-color: rgba(255, 255, 255, 0.2);
+$glass-border-color: rgba(255, 255, 255, 0.3);
+$blur-radius: 10px;
+$navbar-height: 60px;
+$navbar-padding: 1rem;
+$text-color: #ffffff;
+$text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+
+.container_nav-bar {
+  width: 100%;
+}
+
+// Container da navbar com efeito vidro
+.container_nav {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  width: 80%;
+  border-radius: 10px;
+  padding: 0 $navbar-padding;
+  background: $glass-bg-color;
+  border-bottom: 1px solid $glass-border-color;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur($blur-radius);
+  -webkit-backdrop-filter: blur($blur-radius);
+}
+
+// Fallback para navegadores que não suportam backdrop-filter
+@supports not (backdrop-filter: blur($blur-radius)) {
+  .navbar {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}

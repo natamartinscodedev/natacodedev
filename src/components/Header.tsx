@@ -27,13 +27,14 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-sm border-b border-border"
-          : "bg-transparent"
-      }`}
+      className="container_nav-bar"
+      // className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      //   isScrolled
+      //     ? "bg-background/95 backdrop-blur-sm border-b border-border"
+      //     : "bg-transparent"
+      // }`}
     >
-      <nav className="container-custom">
+      <nav className="container-custom container_nav">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -59,26 +60,6 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-2">
             <LanguageToggle />
             <ThemeToggle />
-            <a
-              href="https://drive.google.com/file/d/18i2o3E-T-R5-Ge0a-2YwJnLDfG-HH49J/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="outline" size="sm" className="gap-2 ml-2">
-                <Download className="h-4 w-4" />
-                {t("button.resume")}
-              </Button>
-            </a>
-            <a href="#contact">
-              <Button
-                variant="default"
-                size="sm"
-                className="gap-2 hero-gradient"
-              >
-                <Mail className="h-4 w-4" />
-                {t("button.contact")}
-              </Button>
-            </a>
           </div>
 
           {/* Mobile menu button */}
